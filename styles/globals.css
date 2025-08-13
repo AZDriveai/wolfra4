@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,5 +119,145 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Added Arabic RTL support and typography improvements */
+  html[dir="rtl"] {
+    direction: rtl;
+  }
+
+  /* Arabic font optimization */
+  html[lang="ar"] {
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improved scrollbar styling for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.4 0 0 / 50%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.5 0 0 / 70%);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: oklch(0.6 0 0 / 30%);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.7 0 0 / 50%);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: oklch(0.6 0.25 20 / 30%);
+    color: var(--foreground);
+  }
+
+  /* Focus ring improvements */
+  .focus-visible:focus-visible {
+    outline: 2px solid oklch(0.6 0.25 20);
+    outline-offset: 2px;
+  }
+
+  /* Smooth animations */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+      transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  /* RTL-specific adjustments */
+  html[dir="rtl"] .rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  /* Improved backdrop blur for header */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Enhanced gradient text */
+  .bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-transparent {
+    color: transparent;
+  }
+
+  /* Wolf AI specific animations */
+  @keyframes wolf-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-wolf-pulse {
+    animation: wolf-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Improved card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 10px 10px -5px rgb(0 0 0 / 0.1);
+  }
+}
+
+/* Added custom utilities for Wolf AI branding */
+@layer utilities {
+  .text-wolf-gradient {
+    background: linear-gradient(135deg, oklch(0.6 0.25 20), oklch(0.7 0.2 40));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-wolf-gradient {
+    background: linear-gradient(135deg, oklch(0.6 0.25 20), oklch(0.7 0.2 40));
+  }
+
+  .border-wolf-gradient {
+    border-image: linear-gradient(135deg, oklch(0.6 0.25 20), oklch(0.7 0.2 40)) 1;
+  }
+
+  .shadow-wolf {
+    box-shadow: 0 10px 15px -3px oklch(0.6 0.25 20 / 0.1), 0 4px 6px -2px oklch(0.6 0.25 20 / 0.05);
+  }
+
+  .dark .shadow-wolf {
+    box-shadow: 0 10px 15px -3px oklch(0.6 0.25 20 / 0.2), 0 4px 6px -2px oklch(0.6 0.25 20 / 0.1);
   }
 }

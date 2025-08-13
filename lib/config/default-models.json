@@ -1,0 +1,36 @@
+{
+  "models": [
+    {
+      "id": "openai/gpt-oss-120b",
+      "name": "openai/gpt-oss-120b",
+      "provider": "Hugging Face",
+      "providerId": "openai",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "deepseek-reasone",
+      "name": "deepseek-reasone",
+      "provider": "DeepSeek",
+      "providerId": "deepseek",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "name": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "provider": "Together AI",
+      "providerId": "openai-compatible",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "name": "qwen/qwen3-32b",
+      "provider": "Groq",
+      "providerId": "groq",
+      "enabled": true,
+      "toolCallType": "native"
+    }
+  ]
+}
